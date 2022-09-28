@@ -1,0 +1,37 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">404</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block-title">Page ini belum di modifikasi</div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        data: function () {
+            var md = this.$theme.md;
+            return {
+                commentsIcon: !md ? '<i class="icon f7-icons">chat_bubble_text_fill</i>' :
+                    '<i class="icon material-icons">message</i>',
+                sortIcon: !md ? '<i class="icon f7-icons">line_horizontal_3_decrease</i>' :
+                    '<i class="icon material-icons">sort</i>',
+                moreIcon: !md ? '<i class="icon f7-icons">ellipsis_vertical_circle</i>' :
+                    '<i class="icon material-icons">more_vert</i>',
+                trashIcon: !md ? '<i class="icon f7-icons">trash</i>' : '<i class="icon material-icons">delete</i>',
+                composeIcon: !md ? '<i class="icon f7-icons">square_pencil</i>' :
+                    '<i class="icon material-icons">edit</i>'
+            }
+        }
+    }
+</script>

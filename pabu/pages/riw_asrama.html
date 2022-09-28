@@ -1,0 +1,107 @@
+<template>
+    <div class="page">
+        <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner sliding">
+                <div class="left">
+                    <a href="#" class="link back">
+                        <i class="icon icon-back"></i>
+                        <span class="if-not-md">Back</span>
+                    </a>
+                </div>
+                <div class="title">Pilih Riwayat Asrama</div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="block">
+                <form>
+                    <div class="list">
+                        <ul>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Riwayat Asrama</div>
+                                    <input type="hidden" id="idal" name="idal"></input>
+                                    <div class="item-input-wrap">
+                                        <select id="asrama" name="asrama">
+                                        </select>
+                                        <span class="input-clear-button"></span>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content item-input">
+                                <div class="item-inner">
+                                    <div class="item-title item-label">Tahun Lulus</div>
+                                    <div class="item-input-wrap">
+                                        <input name="thnlulus" type="date" id="thnlulus"
+                                            placeholder="Pilih Tahun Lulus">
+                                        <span class="input-clear-button"></span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="block block-strong">
+                        <p class="row">
+                            <!-- <button class="col button button-small link back color-red">Cancel</button> -->
+                            <button class="col button button-small button-fill" @click="simpandata">Simpan</button>
+                        </p>
+                    </div>
+                    <div class="list">
+                        <div class="block-footer">Some text about login information.<br>Lorem ipsum dolor sit amet,
+                            consectetur
+                            adipiscing elit.</div>
+                    </div>
+                </form>
+                <div id="asr"></div>
+            </div>
+        </div>
+    </div>
+</template>
+<script>
+    return {
+        on: {
+            pageInit: function () {
+                riwasrama();
+                tampill();
+
+            }
+        },
+        methods: {
+            simpandata: function () {
+                var id = $('#idal').val();
+                var tgl = $('#thnlulus').val();
+                var nama = $('#asrama').val();
+
+                if (id == '' || tgl == '' || nama == '') {
+                    app.dialog.alert('Ada Kolom Yang Masih Kosong!!');
+                    return;
+                }
+
+                app.dialog.preloader('Proses Simpan ...');
+                $.ajax({
+                    url: "http://localhost/apipondok/Pabu/simasrama",
+                    method: "POST",
+                    data: {
+                        id: id,
+                        tgl: tgl,
+                        nama: nama
+                    },
+                    cache: "false",
+                    success: function (x) {
+                        if (x == "1") {
+                            app.dialog.alert("Data Berhasil Disimpan", "Simpan Sukses");
+                        } else {
+                            app.dialog.alert("Simpan Gagal, Periksa Kembali Isian Anda !",
+                                "Simpan Gagal");
+                        }
+                        app.dialog.close();
+                    },
+                    error: function (x) {
+                        alert("gagal");
+                    }
+                })
+            }
+
+        }
+    }
+</script>

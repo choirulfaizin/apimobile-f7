@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#2196f3">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+  <title>PABU</title>
+  <link rel="stylesheet" href="core/css/framework7.bundle.min.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+  <link rel="apple-touch-icon" href="img/f7-icon-square.png">
+  <link rel="icon" href="img/f7-icon.png">
+</head>
+
+<body>
+  <div id="app">
+    <div class="panel panel-left panel-cover panel-resizable panel-init">
+      <div class="page">
+        <div class="page-content">
+          <div class="block">
+            <!-- <div class="chip-media" style="margin: 0;">
+              <img src="img/vi-icon.png" alt="">
+            </div> -->
+          </div>
+          <div class="list links-list">
+            <ul>
+              <li>
+                <a href="/profil/" class="panel-close">Profil</a>
+              </li>
+              <li>
+                <a href="/riw_asrama/" class="panel-close">Riwayat Asrama</a>
+              </li>
+              <li>
+                <a href="/riw_pendidikan/" class="panel-close">Riwayat Pendidikan</a>
+              </li>
+              <li>
+                <a href="/riw_pekerjaan/" class="panel-close">Riwayat Pekerjaan</a>
+              </li>
+              <li>
+                <a href="/kegmas/" class="panel-close">Bentuk Kegiatan Masyarakat</a>
+              </li>
+              <li>
+                <div id="menu-admin"></div>
+              </li>
+              <li>
+                <a onclick="logout()" class="panel-close">Log Out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view view-main view-init safe-areas" data-master-detail-breakpoint="800" data-url="/">
+      <div class="page page-home">
+        <div class="navbar navbar-large-transparent">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon material-icons md-only">menu</i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="fab fab-center-bottom fab-morph popup-open" data-popup=".demo-popup-push">
+          <a href="#" onclick="loaddt()">
+            <i class="icon material-icons md-only">add</i>
+          </a>
+        </div>
+        <div class="toolbar toolbar-bottom tabbar">
+          <div class="toolbar-inner">
+            <a href="#tab1" class="tab-link tab-link-active">
+              <i class="icon material-icons md-only">home</i>
+            </a>
+            <a href="#tab2" class="tab-link">
+              <i class="icon material-icons md-only">dashboard</i>
+            </a>
+          </div>
+        </div>
+        <div class="tabs-animated-wrap">
+          <div class="tabs">
+            <div id="tab1" class="page-content tab tab-active">
+              <div class="page">
+                <div class="page-content">
+                  <div class="block-title block-title-medium searchbar-found">Data Alumni YPPBU</div>
+                  <div class="block">
+                    <div class="row">
+                      <div class="col">
+                        <button class="button button-fill color-blue" onclick="carialumni()"><i
+                            class="icon material-icons md-only">search</i>Cari
+                        </button>
+                      </div>
+                      <div class="col"><br><br></div>
+                    </div>
+
+                    <!-- <input type="text" id="id_alumni"> -->
+                    <!-- <div id="dataalumni"></div> -->
+                    <table id="tabel-dt-alumni"></table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab2" class="page-content tab">
+              <div class="page">
+                <div class="page-content">
+                  <div class="block-title block-title-medium searchbar-found">BU Terkini!</div>
+                  <div class="card demo-card-header-pic">
+                    <div style="background-image:url(img/al.jpg)" valign="bottom" class="card-header">Journey To
+                      Mountains</div>
+                    <div class="card-content card-content-padding">
+                      <p class="date">Posted on January 21, 2015</p>
+                      <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis.
+                        Phasellus
+                        quis nibh hendrerit...</p>
+                    </div>
+                    <div class="card-footer"><a href="#" class="link">Read more</a></div>
+                  </div>
+                  <div class="card demo-card-header-pic">
+                    <div style="background-image:url(img/life.png)" valign="bottom" class="card-header">Lorem Ipsum
+                    </div>
+                    <div class="card-content card-content-padding">
+                      <p class="date">Posted on January 21, 2015</p>
+                      <p>Quisque eget vestibulum nulla. Quisque quis dui quis ex ultricies efficitur vitae non felis.
+                        Phasellus
+                        quis nibh hendrerit...</p>
+                    </div>
+                    <div class="card-footer"><a href="#" class="link">Read more</a></div>
+                  </div>
+                  <!-- <div class="login-screen-title">Sign In</div>
+                  <form>
+                    <div class="list">
+                      <ul>
+                        <li class="item-content item-input">
+                          <div class="item-inner">
+                            <div class="item-title item-label">Username</div>
+                            <div class="item-input-wrap">
+                              <input type="text" name="username" placeholder="Your username">
+                              <span class="input-clear-button"></span>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="item-content item-input">
+                          <div class="item-inner">
+                            <div class="item-title item-label">Password</div>
+                            <div class="item-input-wrap">
+                              <input type="password" name="password" placeholder="Your password">
+                              <span class="input-clear-button"></span>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="list">
+                      <div class="block block-strong">
+                        <div class="row">
+                          <button class="col button button-raised button-fill" onclick="table()">Sign In</button>
+                        </div>
+                      </div>
+                      <div class="block-footer">Some text about login information.<br>Lorem ipsum dolor sit amet,
+                        consectetur
+                        adipiscing elit.</div>
+                    </div>
+                  </form> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="login-screen my-login-screen" id="login">
+            <div class="view">
+              <div class="toolbar tabbar tabbar-labels toolbar-bottom">
+                <div class="toolbar-inner">
+                  <a href="#tab-table" class="tab-link tab-link-active">
+                    <i class="material-icons">dashboard</i>
+                  </a>
+                  <a href="#tab-login" class="tab-link">
+                    <i class="icon f7-icons">person</i>
+                  </a>
+                </div>
+              </div>
+              <div class="page-content login-screen-content kustom-bg">
+                <div class="tabs">
+                  <div class="tab tab-active" id="tab-table">
+                    <div class="page">
+                      <div class="page-content">
+                        <div class="block-title block-title-medium searchbar-found">Data Alumni YPPBU</div>
+                        <div class="block">
+                          <table id="dt-alumni"></table>
+                          <!--                           <div id="tabelalumni"></div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="tab-login" class="tab">
+                    <div class="card bg-color-transparent no-hairlines no-shadow">
+                      <div class="login-screen-title">
+                        Login Alumni
+                      </div>
+                    </div>
+                    <div class="list bg-color-transparent">
+                      <form>
+                        <div class="padding">
+                          <ul>
+                            <li class="item-content item-input">
+                              <div class="item-inner">
+                                <div class="item-title item-label">
+                                  Username
+                                </div>
+                                <div class="item-input-wrap">
+                                  <input type="text" id="full_name" placeholder="Username" />
+                                  <span class="input-clear-button"></span>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="item-content item-input">
+                              <div class="item-inner">
+                                <div class="item-title item-label">
+                                  Password
+                                </div>
+                                <div class="item-input-wrap">
+                                  <input type="password" id="password" placeholder="Password" />
+                                  <span class="input-clear-button"></span>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="padding">
+                      <button type="button" class="button button-fill" onclick="login()">
+                        LOGIN
+                      </button>
+                      <br>
+                      <a href="#" class="popup-open" data-popup=".demo-popup">Register Akun</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup demo-popup">
+    <div class="page">
+      <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner">
+          <div class="title">Registrasi Akun</div>
+          <div class="right"><a href="#" class="link popup-close">Close</a></div>
+        </div>
+      </div>
+      <div class="page-content">
+        <div class="block">
+          <div class="list bg-color-transparent padding">
+            <form>
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">
+                      Nama Lengkap
+                    </div>
+                    <div class="item-input-wrap">
+                      <input type="text" id="reg_nama" placeholder="Nama Lengkap" />
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Email</div>
+                    <div class="item-input-wrap">
+                      <input type="email" id="reg_email" placeholder="Email" />
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">NIK</div>
+                    <div class="item-input-wrap">
+                      <input type="number" id="reg_nik" placeholder="NIK" />
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">
+                      Password
+                    </div>
+                    <div class="item-input-wrap">
+                      <input type="password" id="reg_pass1" placeholder="Password" />
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">
+                      Validasi Password
+                    </div>
+                    <div class="item-input-wrap">
+                      <input type="password" id="reg_pass2" placeholder="Masukkan kembali password" />
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </form>
+          </div>
+          <div class="padding">
+            <button type="button" class="button button-fill" onclick="daftar()">
+              REGISTER
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup demo-popup-push">
+    <div class="view view-init">
+      <div class="page page-with-navbar-large">
+        <div class="navbar navbar-large navbar-large-transparent">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="right"><a href="#" class="link popup-close">Close</a></div>
+            <div class="title-large">
+              <div class="title-large-text">Daftar Alumni</div>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="block">
+            <form>
+              <div class="list">
+                <ul>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Nama Lengkap</div>
+                      <div class="item-input-wrap">
+                        <input type="text" name="nama_lengkap" id="userr" readonly>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Tempat Lahir</div>
+                      <div class="item-input-wrap">
+                        <input type="text" name="tlahir" id="tlahir" placeholder="Your Tempat Lahir">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Tanggal Lahir</div>
+                      <div class="item-input-wrap">
+                        <input name="tglahir" type="date" id="tglahir" placeholder="Pilih Tanggal Lahir">
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Jenis Kelamin</div>
+                      <div class="item-input-wrap input-dropdown-wrap">
+                        <select name="gender" id="gender" placeholder="Please choose...">
+                          <option value="L">Laki-laki</option>
+                          <option value="P">Perempuan</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Status</div>
+                      <div class="item-input-wrap input-dropdown-wrap">
+                        <select name="status" id="status" placeholder="Please choose...">
+                          <option value="Menikah">Menikah</option>
+                          <option value="Single">Belum Menikah</option>
+                          <option value="Duda/Janda">Duda / Janda</option>
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">NIK</div>
+                      <div class="item-input-wrap">
+                        <input type="text" name="nik" id="nik" readonly>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Kewarganegaraan</div>
+                      <div class="item-input-wrap">
+                        <select id="ngr" name="ngr" onchange="tampilnegara(this.value)">
+
+                          <option value="WNA">WNA</option>
+                          <option value="WNI">WNI</option>
+                        </select>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Provinsi</div>
+                      <div class="item-input-wrap">
+                        <select id="provinsi" name="provinsi" onchange="tampilkab(this.value)">
+
+                        </select>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Kabupaten</div>
+                      <div class="item-input-wrap">
+                        <select id="kab" name="kabupaten" onchange="tampilkec(this.value)">
+
+                        </select>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Kecamatan</div>
+                      <div class="item-input-wrap">
+                        <select id="kec" name="kec" onchange="tampildesa(this.value)">
+
+                        </select>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Desa</div>
+                      <div class="item-input-wrap">
+                        <select id="desa" name="desa">
+
+                        </select>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="item-content item-input">
+                    <div class="item-inner">
+                      <div class="item-title item-label">Alamat</div>
+                      <div class="item-input-wrap">
+                        <textarea placeholder="Alamat" class="" id="alamat" name="alamat"></textarea>
+                        <span class="input-clear-button"></span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <div class="block block-strong">
+                <p class="row">
+                  <!-- <button class="col button button-small link back color-red">Cancel</button> -->
+                  <button class="col button button-small button-fill" onclick="simpandata()">Simpan</button>
+                </p>
+              </div>
+              <div class="list">
+                <div class="block-footer">Some text about login information.<br>Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="core/js/framework7.bundle.min.js"></script>
+  <script src="js/routes.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="http://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    var api = "http://localhost/apipondok/Pabu/";
+    if (localStorage.namauser == undefined) {
+      localStorage.setItem("namauser", "");
+    }
+    if (localStorage.namauser == "") {
+      app.loginScreen.open("#login");
+    } else {
+      ceklogin();
+
+    }
+
+
+    function ceklogin() {
+      var u = localStorage.namauser;
+
+      $.ajax({
+        url: api + "ceklogin",
+        method: "POST",
+        data: {
+          usr: u
+        },
+        cache: "false",
+        success: function (x) {
+          console.log(x);
+          if (x != "1") {
+            localStorage.namauser = "";
+            app.loginScreen.open("#login");
+          }
+        },
+      });
+    }
+
+    cekadmin();
+
+    function cekadmin() {
+      var lvl = localStorage.level;
+
+      if (lvl == 1) {
+        menu =
+          "<a href='/table/' class='panel-close'>Tes Admin</a>";
+        $("#menu-admin").html(menu);
+      } else {
+        if (lvl == 2) {
+          menu =
+            "<a href='/adm-sekolah/' class='col-33 text-align-center'>\
+                    <img src='img/kustom/menuadm.png' style='width: 65%'/><br />Menu Admin Sekolah\
+                  </a>";
+          $("#menu-admin").html(menu);
+        } else {
+          if (lvl == 3) {
+            menu =
+              "<a href='/adm-pondok/' class='col-33 text-align-center'>\
+                    <img src='img/kustom/menuadm.png' style='width: 65%'/><br />Menu Admin Pondok\
+                  </a>";
+            $("#menu-admin").html(menu);
+          } else {
+            menu = "";
+            $("#menu-admin").html(menu);
+          }
+        }
+      }
+    }
+
+    function login() {
+      var u = $("#full_name").val();
+      var p = $("#password").val();
+      console.log(u, p);
+
+      if (u == "" || p == "") {
+        app.dialog.alert("Ada Isian Yang Belum di isi", "Login Gagal");
+        return;
+      }
+
+      $.ajax({
+        url: api + "login",
+        method: "POST",
+        data: {
+          usr: u,
+          psw: p
+        },
+        cache: "false",
+        success: function (x) {
+          var dt = x.split("|");
+          if (dt[0] == "1") {
+            if (dt[2] == 0) {
+              app.dialog.alert(
+                "Silahkan aktivasi akun terlebih dahulu",
+                "Akun belum aktif"
+              );
+            } else {
+              var namauser;
+              var status;
+              var level;
+              var nik;
+              localStorage.setItem('namauser', dt[1]);
+              localStorage.setItem('status', dt[2]);
+              localStorage.setItem('level', dt[3]);
+              localStorage.setItem('nik', dt[4]);
+              localStorage.setItem('idalumni', dt[5]);
+              localStorage.setItem('tlhr', dt[6]);
+              localStorage.setItem('tglhr', dt[7]);
+              localStorage.setItem('jk', dt[8]);
+              localStorage.setItem('sts', dt[9]);
+              localStorage.setItem('neg', dt[10]);
+              localStorage.setItem('alm', dt[11]);
+
+
+
+              app.loginScreen.close();
+              cekadmin();
+              $("#full_name").val("");
+              $("#password").val("");
+
+            }
+            $('#userr').val(localStorage.namauser);
+            $('#nik').val(localStorage.nik);
+            $('#tlahir').val(localStorage.tlhr);
+            $('#tglahir').val(localStorage.tglhr);
+            $('#gender').val(localStorage.jk);
+            $('#status').val(localStorage.sts);
+            $('#ngr').val(localStorage.neg);
+            $('#id_alumni').val(localStorage.idalumni);
+            $('#alamat').val(localStorage.alm);
+            return;
+
+
+          } else {
+            app.dialog.alert("Akun Tidak Terdaftar", "Login Gagal");
+          }
+        },
+      });
+
+    }
+
+    dttabelalumni();
+
+    function dttabelalumni() {
+      $.getJSON("http://localhost/apipondok/Pabu/dataalumni", function (result) {
+        var dc = "";
+        $.each(result, function (i, kolom) {
+          var s = i + 1;
+          var nik = kolom.nik;
+          var nama = kolom.nama_lengkap;
+          var tglahir = kolom.tgl_lahir;
+          var jk = kolom.jenis_kelamin;
+          var status = kolom.status;
+          var alamat = kolom.alamat;
+          var user = localStorage.namauser;
+
+          db = '<div class="card data-table">\
+              <table id="#">\
+                <thead>\
+                  <tr>\
+                  <th class="numeric-cell"><center><b>No</b></center></th>\
+                    <th class="numeric-cell"><center><b>NIK</b></center></th>\
+                    <th class="numeric-cell"><center><b>Nama</b></center></th>\
+                    <th class="numeric-cell"><center><b>Tanggal Lahir</b></center></th>\
+                    <th class="numeric-cell"><center><b>Jenis Kelamin</b></center></th></>\
+                    <th class="numeric-cell"><center><b>Status</b></center></th>\
+                    <th class="numeric-cell"><center><b>Alamat</b></center></th>\
+                  </tr>\
+                </thead>\
+                <tbody>';
+
+          dc += '<tr>\
+          <td class="numeric-cell"><center>' + s + '</center></td>\
+              <td class="numeric-cell"><center>' + nik + '</center></td>\
+              <td class="numeric-cell"><center>' + nama + '</center></td>\
+              <td class="numeric-cell"><center>' + tglahir + '</center></td>\
+              <td class="numeric-cell"><center>' + jk + '</center></td>\
+              <td class="numeric-cell"><center>' + status + '</center></td>\
+              <td class="numeric-cell"><center>' + alamat + '</center></td>\
+            </tr>';
+
+          de = '</tbody>\
+            </table>\
+            </div>';
+        })
+        $("#dataalumni").html(db + dc + de);
+
+      })
+    }
+
+    function carialumni() {
+
+      // app.dialog.login('Enter your nama and alamat', function (nama, alamat) {
+      //   app.dialog.alert('Thank you!<br>Nama:' + nama + '<br>Alamat:' + alamat);
+      // });
+      app.dialog.prompt('Cari...', function (name) {
+
+        $.ajax({
+          url: api + "cari",
+          method: "POST",
+          data: {
+            nama: name
+          },
+          cache: "false",
+          success: function (x) {
+            var dt = x.split("|");
+            if (dt[0] == "1") {
+              var a = dt[1];
+              var b = dt[2];
+              var c = dt[3];
+              var d = dt[4];
+              var e = dt[5];
+              var f = dt[6];
+              app.dialog.alert('NIK: ' + f + '<br>Nama: ' + a + '<br>Alamat: ' + b + '<br>Tanggal Lahir: ' +
+                c + '<br>Jenis Kelamin: ' + d + '<br>Status: ' + e, 'Data Alumni');
+            } else {
+              app.dialog.alert("Data Tidak Terdaftar", "Data Gagal");
+            }
+          },
+        });
+
+      });
+
+    }
+
+    function daftar() {
+      var full_name = $("#reg_nama").val();
+      var email = $("#reg_email").val();
+      var nik = $("#reg_nik").val();
+      var pass1 = $("#reg_pass1").val();
+      var pass2 = $("#reg_pass2").val();
+
+      if (
+        full_name == "" ||
+        email == "" ||
+        nik == "" ||
+        pass1 == "" ||
+        pass2 == ""
+      ) {
+        app.dialog.alert("Ada Isian Yang Belum di isi", "Gagal");
+        return;
+      }
+      if (pass1 !== pass2) {
+        app.dialog.alert(
+          "Cek kembali password anda, pastikan password sama!",
+          "Gagal"
+        );
+        return;
+      }
+
+      $.ajax({
+        url: api + "daftar",
+        method: "POST",
+        data: {
+          full_name: full_name,
+          email: email,
+          nik: nik,
+          pass1: pass1
+        },
+        cache: "false",
+        success: function (cek) {
+          if (cek == 1) {
+            app.dialog.alert("Berhasil mendaftar, silahkan login", "Sukses");
+            // resetreg();
+            window.location.reload("#login");
+          } else {
+            if (cek == 2) {
+              app.dialog.alert(
+                "Silahkan pilih username lain!",
+                "Username tidak tersedia"
+              );
+            }
+            console.log(cek);
+          }
+        },
+      });
+    }
+
+    /* function logout() {
+      app.dialog.confirm("Anda Yakin Ingin Logout ?", "Logout", function () {
+        localStorage.namauser = "";
+        localStorage.level = "";
+        localStorage.status = "";
+        app.loginScreen.open("#login");
+      });
+    } */
+
+    function logout() {
+      app.dialog.confirm("Anda Yakin Ingin Logout?", "Logout", function () {
+        logoff();
+      }, function () {});
+    }
+
+    function logoff() {
+      localStorage.removeItem('namauser');
+      localStorage.removeItem('level');
+      localStorage.removeItem('status');
+      localStorage.removeItem('nik');
+      localStorage.removeItem('tlhr');
+      localStorage.removeItem('tglhr');
+      localStorage.removeItem('idalumni');
+      localStorage.removeItem('alm');
+      localStorage.removeItem('neg');
+      localStorage.removeItem('sts');
+      localStorage.removeItem('jk');
+
+
+      window.location.reload("#login");
+    }
+
+
+    function simpandata() {
+      var nama = $('#userr').val();
+      var temla = $('#tlahir').val();
+      var tglahir = $('#tglahir').val();
+      var gender = $('#gender').val();
+      var sts = $('#status').val();
+      var nik = $('#nik').val();
+      var ngr = $('#ngr').val();
+      var prv = $('#prv').val();
+      var kab = $('#kab').val();
+      var kec = $('#kec').val();
+      var ds = $('#desa').val();
+      var alm = $('#alamat').val();
+
+      if (nama == '' || temla == '' || tglahir == '' || gender == '' || sts == '' || nik == '' || ngr == '' || prv ==
+        '' || kab == '' || kec == '' || ds == '' || alm == '') {
+        app.dialog.alert('Ada Kolom Yang Masih Kosong', 'Perhatian !!');
+        return;
+      }
+
+      app.dialog.preloader('Proses Simpan ...');
+      $.ajax({
+        url: api + "simpanuser",
+        method: "POST",
+        data: {
+          nama: nama,
+          temla: temla,
+          tglahir: tglahir,
+          gender: gender,
+          sts: sts,
+          nik: nik,
+          ngr: ngr,
+          prv: prv,
+          kab: kab,
+          kec: kec,
+          ds: ds,
+          alm: alm
+        },
+        cache: "false",
+        success: function (x) {
+
+          if (x == 1) {
+
+            app.dialog.alert("Data Berhasil Disimpan", "Simpan Sukses");
+            return;
+          } else {
+            app.dialog.alert("Simpan Gagal, Periksa Kembali Isian Anda !", "Simpan Gagal");
+            return;
+          }
+        },
+        error: function (x) {
+          app.dialog.alert("gagal");
+        }
+      })
+    }
+
+    $.getJSON("http://localhost/apipondok/Pabu/tabelalumni", function (result) {
+      var dt = "";
+      $.each(result, function (p, kolom) {
+        var s = p + 1;
+        var nama = kolom.nama_lengkap;
+        var alamat = kolom.alamat;
+
+
+        da = '<div class="card data-table">\
+              <table id="tablemanager">\
+                <thead>\
+                  <tr>\
+                  <th class="numeric-cell"><center><b>No</b></center></th>\
+                    <th class="numeric-cell"><center><b>Nama</b></center></th>\
+                    <th class="numeric-cell"><center><b>Alamat</b></center></th>\
+                  </tr>\
+                </thead>\
+                <tbody>';
+
+        dt += '<tr b-scope="people" b-loop="person in people" b-paginate="5">\
+          <td class="numeric-cell"><center>' + s + '</center></td>\
+              <td class="numeric-cell"><center>' + nama + '</center></td>\
+              <td class="numeric-cell"><center>' + alamat + '</center></td>\
+            </tr>';
+
+        db = '</tbody>\
+            </table>\
+            </div>';
+      })
+
+      $("#tabelalumni").html(da + dt + db);
+
+    })
+
+
+    function cariTable() {
+      var input2;
+      var saring2;
+      var status2;
+      var tbody2;
+      var tr2;
+      var td2;
+      var p;
+      var q;
+      input2 = document.getElementById("input2");
+      saring2 = input2.value.toUpperCase();
+      tbody2 = document.getElementsByTagName("tbody")[0];;
+      tr2 = tbody2.getElementsByTagName("tr");
+      for (p = 0; p < tr2.length; p++) {
+        td2 = tr2[p].getElementsByTagName("td");
+        for (q = 0; q < td2.length; q++) {
+          if (td2[q].innerHTML.toUpperCase().indexOf(saring2) > -1) {
+            status2 = true;
+          }
+        }
+        if (status2) {
+          tr2[p].style.display = "";
+          status2 = false;
+        } else {
+          tr2[p].style.display = "none";
+        }
+      }
+    }
+
+    function table() {
+      window.location.href = 'pages/login.html';
+    }
+
+
+
+    function searchTable() {
+      var input;
+      var saring;
+      var status;
+      var tbody;
+      var tr;
+      var td;
+      var i;
+      var j;
+      input = document.getElementById("input");
+      saring = input.value.toUpperCase();
+      tbody = document.getElementsByTagName("tbody")[0];;
+      tr = tbody.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td");
+        for (j = 0; j < td.length; j++) {
+          if (td[j].innerHTML.toUpperCase().indexOf(saring) > -1) {
+            status = true;
+          }
+        }
+        if (status) {
+          tr[i].style.display = "";
+          status = false;
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+
+    function pageBeforeRemove() {
+      var self = this;
+      if (self.popupPush) self.popupPush.destroy();
+    }
+
+    function pageInit() {
+      var self = this;
+      self.popupPush = self.$f7.popup.create({
+        el: '.demo-popup-push',
+        swipeToClose: true,
+        push: true,
+      });
+    }
+
+
+
+    function tampilnegara(ngr) {
+      if (ngr == 'WNI') {
+        $("#provinsi").prop("disabled", false);
+        $("#kab").prop("disabled", false);
+        $("#kec").prop("disabled", false);
+        $("#desa").prop("disabled", false);
+        $.getJSON("http://localhost/apipondok/Pabu/provinsi", function (result) {
+          var htt = "";
+
+
+          $.each(result, function (i, kolom) {
+            var s = i + 1;
+            var id = kolom.id_propinsi;
+            var propinsi = kolom.nama_propinsi;
+            // console.log(propinsi);
+
+            aa = '<option></option>';
+            htt += '<option value=' + id + '>' + propinsi + '</option>';
+
+            $('#provinsi').html(aa + htt);
+
+            // $('#id_alumni').val(localStorage.ID);
+          })
+
+
+        })
+      } else {
+        $("#provinsi").prop("disabled", true);
+        $("#kab").prop("disabled", true);
+        $("#kec").prop("disabled", true);
+        $("#desa").prop("disabled", true);
+
+      }
+
+    }
+
+
+
+
+    function tampilkab(prov) {
+
+      $.ajax({
+        url: api + "kabupaten",
+        method: "POST",
+        data: {
+          prov: prov
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          var i;
+          ab = '<option>...Pilih Kabupaten...</option>';
+          for (i = 0; i < data.length; i++) {
+            htm += '<option value=' + data[i].id_kabkota + '>' + data[i].nama_kabkota + '</option>';
+          }
+          $('#kab').html(ab + htm);
+
+
+        },
+      });
+
+    }
+
+    function tampilkec(kab) {
+
+      $.ajax({
+        url: api + "kecamatan",
+        method: "POST",
+        data: {
+          kab: kab
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          var i;
+          ab = '<option>...Pilih Kecamatan...</option>';
+          for (i = 0; i < data.length; i++) {
+            htm += '<option value=' + data[i].id_kecamatan + '>' + data[i].nama_kecamatan + '</option>';
+          }
+          $('#kec').html(ab + htm);
+
+
+        },
+      });
+
+    }
+
+    function tampildesa(kec) {
+
+      $.ajax({
+        url: api + "desa",
+        method: "POST",
+        data: {
+          kec: kec
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          var i;
+          ac = '<option>...Pilih Desa...</option>';
+          for (i = 0; i < data.length; i++) {
+            htm += '<option value=' + data[i].id_kelurahan + '>' + data[i].nama_kelurahan + '</option>';
+          }
+          $('#desa').html(ac + htm);
+
+
+        },
+      });
+
+
+    }
+
+    function riwasrama() {
+      $.getJSON("http://localhost/apipondok/Pabu/riwasrama", function (result) {
+        var htt = "";
+        $.each(result, function (i, kolom) {
+
+          var id = kolom.id_asrama;
+          var asrama = kolom.nama_asrama;
+
+
+          aa = '<option>...Pilih Asrama...</option>';
+          htt += '<option value=' + id + '>' + asrama + '</option>';
+
+          $('#asrama').html(aa + htt);
+          $('#idal').val(localStorage.idalumni);
+
+        })
+
+
+      })
+
+    }
+
+    function tampill() {
+      var ida = localStorage.idalumni;
+      $.ajax({
+        url: api + "tampilasrama",
+        method: "POST",
+        data: {
+          ida: ida
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          da = '<div class="card data-table">\
+                <table id="tableasramaa">\
+                  <thead>\
+                  <tr>\
+                  <th class="numeric-cell"><center><b>No</b></center></th>\
+                    <th class="numeric-cell"><center><b>Asrama</b></center></th>\
+                    <th class="numeric-cell"><center><b>Tahun Lulus</b></center></th>\
+                  </tr>\
+                  </thead>\
+                <tbody>';
+          for (i = 0; i < data.length; i++) {
+            a = i + 1;
+            htm += '<tr>\
+              <td class="numeric-cell"><center>' + a + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].nama_asrama + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].thn_lulus + '</center></td>\
+                </tr>';
+          }
+
+          dd = '</tbody>\
+                </table>\
+                </div>';
+
+          $('#asr').html(da + htm + dd);
+
+
+        },
+      });
+    }
+
+    function riwpendidikan() {
+      $.getJSON("http://localhost/apipondok/Pabu/riwpendidikan", function (result) {
+        var htt = "";
+        $.each(result, function (i, kolom) {
+
+          var id = kolom.id_sekolah;
+          var pendidikan = kolom.nama_sekolah;
+
+
+          aa = '<option>...Pilih Riwayat Pendidikan...</option>';
+          htt += '<option value=' + id + '>' + pendidikan + '</option>';
+
+          $('#pend').html(aa + htt);
+          $('#idal').val(localStorage.idalumni);
+
+        })
+
+
+      })
+    }
+
+    function tampilpend() {
+      var ida = localStorage.idalumni;
+      $.ajax({
+        url: api + "tampilpend",
+        method: "POST",
+        data: {
+          ida: ida
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          da = '<div class="card data-table">\
+                <table id="tablepend">\
+                  <thead>\
+                  <tr>\
+                  <th class="numeric-cell"><center><b>No</b></center></th>\
+                    <th class="numeric-cell"><center><b>Nama Sekolah</b></center></th>\
+                    <th class="numeric-cell"><center><b>Tahun Lulus</b></center></th>\
+                  </tr>\
+                  </thead>\
+                <tbody>';
+          for (i = 0; i < data.length; i++) {
+            a = i + 1;
+            htm += '<tr>\
+              <td class="numeric-cell"><center>' + a + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].nama_sekolah + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].thn_lulus + '</center></td>\
+                </tr>';
+          }
+
+          dd = '</tbody>\
+                </table>\
+                </div>';
+
+          $('#tpend').html(da + htm + dd);
+
+
+        },
+      });
+    }
+
+    function riwpekerja() {
+      $.getJSON("http://localhost/apipondok/Pabu/riwpekerjaan", function (result) {
+        var htt = "";
+        $.each(result, function (i, kolom) {
+
+          var id = kolom.id_pekerjaan;
+          var pekerjaan = kolom.nama_pekerjaan;
+
+
+          aa = '<option>...Pilih Riwayat Pekerjaan...</option>';
+          htt += '<option value=' + id + '>' + pekerjaan + '</option>';
+
+          $('#pek').html(aa + htt);
+          $('#idal').val(localStorage.idalumni);
+
+        })
+
+
+      })
+    }
+
+    function tampilpek() {
+      var ida = localStorage.idalumni;
+      $.ajax({
+        url: api + "tampilpek",
+        method: "POST",
+        data: {
+          ida: ida
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          da = '<div class="card data-table">\
+                <table>\
+                  <thead>\
+                  <tr>\
+                  <th class="numeric-cell"><center><b>No</b></center></th>\
+                    <th class="numeric-cell"><center><b>Nama Pekerjaan</b></center></th>\
+                    <th class="numeric-cell"><center><b>Tahun</b></center></th>\
+                  </tr>\
+                  </thead>\
+                <tbody>';
+          for (i = 0; i < data.length; i++) {
+            a = i + 1;
+            htm += '<tr>\
+              <td class="numeric-cell"><center>' + a + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].nama_pekerjaan + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].tahun + '</center></td>\
+                </tr>';
+          }
+
+          dd = '</tbody>\
+                </table>\
+                </div>';
+
+          $('#tpek').html(da + htm + dd);
+
+
+        },
+      });
+    }
+
+    function riwkmasyarakat() {
+      $('#idal').val(localStorage.idalumni);
+    }
+
+    function tampilkeg() {
+      var ida = localStorage.idalumni;
+      $.ajax({
+        url: api + "tampilkeg",
+        method: "POST",
+        data: {
+          ida: ida
+        },
+        cache: "false",
+        async: true,
+        dataType: 'json',
+        success: function (data) {
+          var htm = '';
+          da = '<div class="card data-table">\
+                <table>\
+                  <thead>\
+                  <tr>\
+                  <th class="numeric-cell"><center><b>No</b></center></th>\
+                    <th class="numeric-cell"><center><b>Kegiatan Masyarakat</b></center></th>\
+                    <th class="numeric-cell"><center><b>Tahun</b></center></th>\
+                  </tr>\
+                  </thead>\
+                <tbody>';
+          for (i = 0; i < data.length; i++) {
+            a = i + 1;
+            htm += '<tr>\
+              <td class="numeric-cell"><center>' + a + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].bentuk_keg_masyarakat + '</center></td>\
+                <td class="numeric-cell"><center>' + data[i].tahun + '</center></td>\
+                </tr>';
+          }
+
+          dd = '</tbody>\
+                </table>\
+                </div>';
+
+          $('#tkeg').html(da + htm + dd);
+
+
+        },
+      });
+    }
+
+    function dtalumni() {
+      var dt;
+      var def = $.Deferred();
+      $.getJSON(api + "dtalumni", function (data) {
+        dt = {
+          data: data
+        };
+        console.log(dt);
+        def.resolve(dt);
+      });
+      return def.promise();
+    }
+    dtalumni_load();
+
+    function dtalumni_load() {
+      dtalumni().done(function (dataset) {
+        var table = $("#dt-alumni").DataTable({
+          deferRender: true,
+          data: $.map(dataset, function (value, key) {
+            // console.log(value);
+            return value;
+          }),
+          initComplete: function (settings, json) {
+            app.preloader.hide();
+          },
+          columns: [{
+              data: null,
+              title: "No",
+              className: "dt-center",
+              render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+              },
+            },
+            {
+              data: "nama_lengkap",
+              title: "Nama",
+            },
+            {
+              data: "alamat",
+              title: "Alamat",
+              className: "dt-center",
+            },
+          ],
+          fixedHeader: true,
+          responsive: true,
+          dom: "<'row'<'col-10'l><'col-50'f>>" +
+            "<'row'<'col'tr>>" +
+            "<'row'<'col'i>>" +
+            "<'row'<'separator10'>>" +
+            "<'row'<'col'p>>",
+          lengthMenu: [5, 10, 25, 50],
+          processing: true,
+          destroy: true,
+        });
+      });
+    }
+
+    function loaddt() {
+      $('#userr').val(localStorage.namauser);
+      $('#nik').val(localStorage.nik);
+      $('#tlahir').val(localStorage.tlhr);
+      $('#tglahir').val(localStorage.tglhr);
+      $('#gender').val(localStorage.jk);
+      $('#status').val(localStorage.sts);
+      $('#ngr').val(localStorage.neg);
+      $('#id_alumni').val(localStorage.idalumni);
+      $('#alamat').val(localStorage.alm);
+    }
+
+    function tabeldtalumni() {
+      var dt;
+      var def = $.Deferred();
+      $.getJSON(api + "tabeldtalumni", function (data) {
+        dt = {
+          data: data
+        };
+        console.log(dt);
+        def.resolve(dt);
+      });
+      return def.promise();
+    }
+    tabeldtalumni_load();
+
+    function tabeldtalumni_load() {
+      tabeldtalumni().done(function (dataset) {
+        var table = $("#tabel-dt-alumni").DataTable({
+          deferRender: true,
+          data: $.map(dataset, function (value, key) {
+            // console.log(value);
+            return value;
+          }),
+          initComplete: function (settings, json) {
+            app.preloader.hide();
+          },
+          columns: [{
+              data: null,
+              title: "No",
+              className: "dt-center",
+              render: function (data, type, row, meta) {
+                return meta.row + meta.settings._iDisplayStart + 1;
+              },
+            },
+            {
+              data: "nik",
+              title: "NIK",
+            },
+            {
+              data: "nama_lengkap",
+              title: "Nama",
+            },
+            {
+              data: "tgl_lahir",
+              title: "Tanggal Lahir",
+            },
+            {
+              data: "jenis_kelamin",
+              title: "Jenis Kelamin",
+            },
+            {
+              data: "status",
+              title: "Status",
+            },
+            {
+              data: "alamat",
+              title: "Alamat",
+              className: "dt-center",
+            },
+          ],
+          fixedHeader: true,
+          responsive: true,
+          dom: "<'row'<'col-10'l><'col-50'f>>" +
+            "<'row'<'col'tr>>" +
+            "<'row'<'col'i>>" +
+            "<'row'<'separator10'>>" +
+            "<'row'<'col'p>>",
+          lengthMenu: [5, 10, 25, 50],
+          processing: true,
+          destroy: true,
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

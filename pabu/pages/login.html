@@ -1,0 +1,115 @@
+<template>
+  <div class="page">
+    <div class="navbar navbar-large-transparent">
+      <div class="navbar-bg"></div>
+      <div class="navbar-inner">
+      </div>
+    </div>
+    <div class="fab fab-center-bottom fab-morph login-screen-open" data-login-screen=".login-screen">
+      <a href="#">
+        <i class="icon f7-icons if-not-md">plus</i>
+        <i class="icon material-icons md-only">add</i>
+      </a>
+    </div>
+    <div class="toolbar toolbar-bottom">
+      <div class="row toolbar-inner">
+        <a href="/" class="link icon-only col">
+          <center>
+            <i class="icon material-icons md-only">home</i>
+          </center>
+        </a>
+        <a href="/login/" class="link icon-only col">
+          <center>
+            <i class="icon material-icons md-only">person</i>
+          </center>
+        </a>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="login-screen-title">Sign In</div>
+      <form>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Username</div>
+                <div class="item-input-wrap">
+                  <input type="text" name="username" placeholder="Your username">
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Password</div>
+                <div class="item-input-wrap">
+                  <input type="password" name="password" placeholder="Your password">
+                  <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="list">
+          <div class="block block-strong">
+            <div class="row">
+              <button class="col button button-raised button-fill">Sign In</button>
+            </div>
+          </div>
+          <div class="block-footer">Some text about login information.<br>Lorem ipsum dolor sit amet, consectetur
+            adipiscing elit.</div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="login-screen">
+    <div class="page login-screen-page">
+      <div class="page-content login-screen-content">
+        <div class="login-screen-title">Daftar Sebagai Alumni</div>
+        <form>
+          <div class="list">
+            <ul>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Fullname</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="username" id="demo-username-1" placeholder="Your username">
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Email</div>
+                  <div class="item-input-wrap">
+                    <input type="password" name="password" id="demo-password-1" placeholder="Your password">
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+              <li class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Alamat</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="username" id="demo-username-1" placeholder="Your username">
+                    <span class="input-clear-button"></span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="block block-strong">
+            <p class="row">
+              <button class="col button button-small link back color-red">Cancel</button>
+              <button class="col button button-small button-fill">Sign Up</button>
+            </p>
+          </div>
+          <div class="list">
+            <div class="block-footer">Some text about login information.<br>Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
